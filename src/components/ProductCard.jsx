@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function ProductCard({ product }) {
   return (
@@ -20,7 +21,7 @@ function ProductCard({ product }) {
       <div className="mt-4 px-5 pb-5">
         <a to="/">
           <h5 className="text-xl tracking-tight text-slate-900">
-            {product?.name} {product?.brand}
+            {product?.title} ({product?.brand})
           </h5>
         </a>
         <div className="mt-2 mb-5 flex items-center justify-between">
@@ -36,12 +37,12 @@ function ProductCard({ product }) {
             </span>
           </div>
         </div>
-        <a
-          to={`productDetail/${product?.id}`}
+        <Link
+          to={`Productdetails/${product?.id}`}
           className="flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
         >
           Shop Now
-        </a>
+        </Link>
       </div>
     </div>
   );

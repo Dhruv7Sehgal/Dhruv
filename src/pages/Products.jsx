@@ -1,19 +1,22 @@
-import { useEffect, useState } from "react";
-import { BASE_URL } from "../config/baseURL";
+import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
-import ProductCard from "../components/productCard";
+import ProductCard from "../components/ProductCard";
+import { BASE_URL } from "../config/baseURL";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [errors, setErrors] = useState(null);
 
   const fetchproducts = async () => {
     try {
       const res = await axios.get(BASE_URL + "/products");
       setProducts(res.data.products);
-    } catch (error) {
-      setError(error.message);
+      // console.log(res.data.products);
+    } catch (errors) {
+      setErrors(errors.message);
     } finally {
       setLoading(false);
     }
@@ -24,15 +27,13 @@ const Products = () => {
   }, []);
 
   if (loading) {
-    return <div className="text-center mt-4">Loading...</div>;
+    return <div>Loading.....</div>;
   }
-
-  if (error) {
-    return <div className="text-center mt-4 text-red-500">{error}</div>;
+  if (errors) {
+    return <div>{errors}</div>;
   }
-
   return (
-    <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 mx-auto">
+    <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1">
       {products.map((item, key) => (
         <ProductCard key={key} product={item} />
       ))}
