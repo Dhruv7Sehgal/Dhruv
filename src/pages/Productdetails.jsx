@@ -1,5 +1,6 @@
-import React, { useState, useParams, useEffect } from "react";
-import { BASE_URL } from "../config/baseURL";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { BASE_URL } from "../config/baseURL.js";
 import axios from "axios";
 
 export const Productdetails = () => {
