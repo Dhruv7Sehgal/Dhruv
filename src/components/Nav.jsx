@@ -2,7 +2,7 @@ import React from "react";
 import { Amazon } from "../assets/images";
 import { navLinks } from "../constants";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -18,9 +18,9 @@ const Nav = () => {
   return (
     <header className="flex bg-black justify-between">
       <nav className="p-4 align-middle items-center justify-center">
-        <a href="#">
+        <NavLink to="/">
           <img src={Amazon} alt="logo" width={100} height={100} />
-        </a>
+        </NavLink>
       </nav>
       <div className="flex w-full items-center space-x-2 md:w-1/3 max-md:hidden">
         <input
@@ -38,25 +38,13 @@ const Nav = () => {
       <ul className="flex text-white font-bold gap-10 p-4 max-md:hidden">
         {navLinks.map((item) => (
           <li key={item.label}>
-            <a href={item.href} className="hover:text-yellow-500 ">
+            <NavLink to={item.to} className="hover:text-yellow-500 ">
               {" "}
               {item.label}
-            </a>
+            </NavLink>
           </li>
         ))}
       </ul>
-      <Link className="lg:hidden md:hidden">
-        <NavigationMenu>
-          <NavigationMenuList>
-            <NavigationMenuItem>
-              <NavigationMenuTrigger>Item One</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <NavigationMenuLink>Link</NavigationMenuLink>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
-      </Link>
       <Link className="p-3">
         <Avatar>
           <AvatarImage src="https://github.com/shadcn.png" />
